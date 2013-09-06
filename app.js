@@ -104,21 +104,22 @@ app.post('/', function(req, res){
 
 // 处理个人信息修改提交请求
 app.post('/update', function(req, res) {
-	console.log('>> call update');
+	console.log('call update');
 
-	Baseinfo.update({
+	Baseinfo.find({
 		username: req.body.name,
 		authtoken: req.body.session
-	}, {
-		$set: {
-			phone: req.body.phone,
-			address: req.body.address,
-			message: req.body.remark,
-			lastmodify: new Date()
-		}
-	}, {}, function(err){
+	}, function(err, docs){
 		if(err) res.send('更新失败');
-		else res.send('success');
+		else if(docs.length < 1) res.send('更新失败，请重新登录。');
+		else {
+			docs[0].phone = req.body.phone;
+			docs[0].address = req.body.address;
+			docs[0].message = req.body.remark;
+			docs[0].lastmodify = new Date();
+			docs[0].save();
+			res.send('success');
+		}
 	});
 });
 
@@ -154,4 +155,4 @@ app.post('/update-pswd', function(req, res) {
 });
 
 app.listen(config.port);
-console.log(">> visit http://localhost" + (config.port == 80) ? "" : (":" + config.port))
+console.log(">> visit http://localhost" + (config.port == 80) ? "" : (":" + config.port));
