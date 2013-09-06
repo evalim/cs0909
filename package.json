@@ -1,0 +1,17 @@
+{
+	"name": "cs0909",
+	"version": "0.1.0",
+	"author": "Guozhong Shi",
+	"description": "Online contacts",
+	"dependencies": {
+		"express": "",
+		"jade": "",
+		"mongoose": "",
+		"crypto": ""
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/evalim/cs0909"
+	},
+	"license": "MIT"
+}

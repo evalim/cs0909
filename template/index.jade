@@ -1,0 +1,61 @@
+doctype mobile
+html
+	head
+		title HUST.CS.0909.通信录
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(href='/css/bootstrap.min.css', rel='stylesheet')
+		link(href='/css/bootstrap-responsive.min.css', rel='stylesheet')
+		link(href='/css/style.css', rel='stylesheet')
+		script(type='text/javascript', src='/js/jquery.min.js')
+		script(type='text/javascript', src='/js/bootstrap.min.js')
+		script(type='text/javascript', src='/js/main.js')
+	body
+		.container-fluid
+			.row-fluid
+				.span3
+					h4 修改个人信息
+					div(class='accordion', id='accordion1')
+						.accordion-group
+							.accordion-heading
+								a(class='accordion-toggle', data-toggle='collapse', data-parent='accordion1', href='#collapseOne') 联系信息
+							div(class='accordion-body collapse in', id='collapseOne')
+								.accordion-inner
+									h5= name
+									label 联系电话
+									input(type='text', id='phone', class='input-block-level', placeholder= phone, value= phone)
+									label 收信地址
+										span(class='text-warning') （地址 + 邮编）
+									input(type='text', id='address', class='input-block-level', placeholder= address, value= address)
+									label 修改说明
+									input(type='text', id='remark', class='input-block-level', placeholder='没事写两句吧！')
+									button.btn(id='update') 提交修改
+						.accordion-group
+							.accordion-heading
+								a(class='accordion-toggle', data-toggle='collapse', data-parent='accordion1', href='#collapseTwo') 密码设定
+							div(class='accordion-body collapse in', id='collapseTwo')
+								.accordion-inner
+									h5 个人密码
+									label 当前密码
+									input(type='password', id='old-pswd', class='input-block-level', placeholder='当前密码')
+									label 新密码
+									input(type='password', id='now-pswd', class='input-block-level', placeholder='新密码')
+									label 确认新密码
+									input(type='password', id='retype-pswd', class='input-block-level', placeholder='再输入一次新密码')
+									button.btn(id='update-pswd') 提交修改
+
+				.span9
+					h4 联系方式表
+					table(class='table table-striped table-bordered table-condensed')
+						thead
+							tr
+								each item in title
+									th= item
+						tbody
+							each row in table
+								tr
+									each col in row
+										td= col
+		script(type='text/javascript').
+			window.localStorage.setItem('session', '#{session}');
+			window.localStorage.setItem('name', '#{name}');

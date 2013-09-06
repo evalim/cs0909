@@ -1,0 +1,23 @@
+doctype mobile
+html
+	head
+		title HUST.CS.0909.通信录
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(href='/css/bootstrap.min.css', rel='stylesheet')
+		link(href='/css/bootstrap-responsive.min.css', rel='stylesheet')
+		link(href='/css/style.css', rel='stylesheet')
+		script(type='text/javascript', src='/js/jquery.min.js')
+		script(type='text/javascript', src='/js/bootstrap.min.js')
+		//- script(type='text/javascript', src='/js/main.js')
+	body
+		.container
+			form(class='form-signin', action='/', method='post')
+				fieldset
+					legend(class='#{infoclass}')= info 
+					label 用户名
+					input(type='text', name='name', class='input-block-level', placeholder='用户名', value='#{name}')
+					label 密码
+					input(type='password', name='pswd', class='input-block-level', placeholder='密码')
+					label 
+					input(type='submit', class='btn', id='login', value='登录')
