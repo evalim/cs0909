@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('button#update').click(function(){
 		$.ajax({
 			type: 'POST',
-			url: '/update',
+			url: '/update',		//ajax，不明觉厉。这里的url是指向服务器上的一个xml文件吗？
 			data: {
 				name: window.localStorage.getItem('name'),
 				phone: $('input#phone').val(),
